@@ -1,0 +1,61 @@
+    <!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+        <title>DemoViz</title>
+
+        <!-- CSS Stylesheets  Use jinja to get the css style files from materialize and custom css file-->
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link type="text/css" rel="stylesheet" href="{{ url_for('static',filename='css/materialize.css') }}"  media="screen,projection"/>
+        <link href="{{ url_for('static',filename='css/style.css') }}" type="text/css" rel="stylesheet" media="screen,projection"/>
+        <link href="{{ url_for('static',filename='css/tree.css') }}" type="text/css" rel="stylesheet" media="screen,projection"/>
+        <link href="{{ url_for('static',filename='d3-slider/d3.slider.css') }}" type="text/css" rel="stylesheet" media="screen,projection"/>
+        <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+        <script src="{{ url_for('static',filename='js/tree.js') }}"></script>
+        <script src="{{ url_for('static',filename='js/trends.js') }}"></script>
+        <script src="{{ url_for('static',filename='js/trendsEth.js') }}"></script>
+        <script src="{{ url_for('static',filename='js/trendsStand.js') }}"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.16/d3.js"></script>
+        <script src="{{ url_for('static',filename='js/materialize.js') }}"></script>
+        <script src="{{ url_for('static',filename='js/d3pie.js') }}"></script>
+        <script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
+        <script src="{{ url_for('static',filename='js/piecharts.js') }}"></script>
+        <script src="{{ url_for('static',filename='d3-slider/d3.slider.js') }}"></script>
+        <script src="{{ url_for('static',filename='js/piecharts.js') }}"></script>
+        <script src = "https://cdnjs.cloudflare.com/ajax/libs/d3-legend/1.10.0/d3-legend.js"></script>
+        <div class="navbar-fixed" style = "margin-bottom: 30px;">
+        <nav class = " blue darken-4">
+          <div class="nav-wrapper">
+              <a href="/" class="brand-logo">DemoViz</a>
+              <ul class="right hide-on-med-and-down">
+                  <li><a href="/dashboard">Dashboard</a></li>
+                  <li><a href="/trends">Gender Trends</a></li>
+                  <li><a href="/trendsEth">Ethnicity Trends</a></li>
+                  <li><a href="/trendsStand">Retention Trends</a></li>
+{#                  <li><a class="btn waves-effect waves-light pink accent-3 right" href='/upload'style="margin-top: 15px; margin-right: 15px;align-content: center;">Upload File</a></li>#}
+
+              </ul>
+          </div>
+        </nav>
+      </div>
+
+    </head>
+<body>
+{% block data %}
+ <div class="section no-pad-bot" id="index-banner">
+    <div class="container">
+        <br><br>
+        <h1 class="header center black-text text-darken-4">DemoViz - Analyse Your Enrollment Data</h1>
+        <div class="row center">
+            <h5 class="header col s12 light">Displays visualization showing current enrollment statistics and future predictions</h5>
+            <i class="large material-icons">code</i>
+        </div>
+        <br><br>
+    </div>
+</div>
+{%  endblock %}
+
+</body>
+</html>

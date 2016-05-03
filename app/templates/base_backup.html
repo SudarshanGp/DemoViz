@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>DemoViz</title>
+        <link href="../static/d3-geomap/css/d3.geomap.css" rel="stylesheet">
+{#        <link href="../static/d3-slider/d3.slider.css" rel="stylesheet">#}
+        <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Open+Sans"/>
+{#        <link rel="stylesheet" href="http://rawgithub.com/Caged/d3-tip/master/examples/example-styles.css">#}
+{#        <script type="text/javascript" src="../static/d3/d3.js"></script>#}
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+{#  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.min.css">#}
+      <link rel="stylesheet" href="static/css/style.css">
+            <script src="{{ url_for('static',filename='js/upload.js') }}"></script>
+            <script src="{{ url_for('static',filename='js/jquery.filedrop.js') }}"></script>
+
+{#<link rel="stylesheet" href="http://rawgithub.com/Caged/d3-tip/master/examples/example-styles.css">#}
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+{#       <link rel="stylesheet" href="static/bootstrap-treeview/src/css/bootstrap-treeview.css">#}
+{#      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.min.css">#}
+{#      <script type="text/javascript" src="static/prefixfree/prefixfree.min.js"></script> <!-- taking care of browser prefixes -->#}
+{#      <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>#}
+{#      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>#}
+{#      <script src="static/bootstrap-treeview/src/js/bootstrap-treeview.js"></script>#}
+{#      <script src="static/js/menu.js"></script>#}
+{#      <script src="static/js/tipsy.js"></script>#}
+{#    <script type="text/javascript" src="static/js/mapgenerator.js"></script>#}
+        <link href="static/d3-geomap/css/d3.geomap.css" rel="stylesheet">
+{#        <link href="static/d3-slider/d3.slider.css" rel="stylesheet">#}
+        <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Open+Sans"/>
+{#        <link rel="stylesheet" href="http://rawgithub.com/Caged/d3-tip/master/examples/example-styles.css">#}
+{#        <script type="text/javascript" src="d3/d3.js"></script>#}
+        <script type="text/javascript" src="http://mbostock.github.com/d3/d3.v2.min.js"></script>
+
+        <script src="static/d3-geomap/vendor/d3.geomap.dependencies.min.js"></script>
+        <script src="static/d3-geomap/js/d3.geomap.js"></script>
+{#        <script src="static/d3-slider/d3.slider.js"></script>#}
+{#        <script src="../static/d3-geomap/vendor/d3.geomap.dependencies.min.js"></script>#}
+{#        <script src="../static/d3-geomap/js/d3.geomap.js"></script>#}
+{#        <script src="../static/d3-slider/d3.slider.js"></script>#}
+      <link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+  <link href="http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+{#        <script type="text/javascript" src="static/js/slider.js"></script>#}
+{#        <script type="text/javascript" src="static/js/tipindex.js"></script>#}
+          <nav id="navigator" class="navbar navbar-default navbar-fixed-top" role="navigation">
+         <div id = "top">
+            <div  class="container header">
+               <div  class="navbar header">
+                  <span id = "heading"><a href = "/"><span class="glyphicon glyphicon-chevron-left"></span>DemoViz<span class="glyphicon glyphicon-chevron-right"></span></a></span>
+               </div>
+               <!-- navbar header -->
+            </div>
+            <!--container header -->
+         </div>
+              </nav>
+    </head>
+{% block data %}    
+    <body>
+        <div class = "container">
+            <div class = "loginpage">
+                <button class = "row" id = "button5" name = "login" type = "submit"><a href = "/login" id = "loginword">  Login </a></button>
+            </div>
+{#                <a href = "/login">Login</a></button>#}
+            <form class="row" id = "infoYear" action="addcomment" method="POST">
+{#                <div class = "col-md-6 infoButton">#}
+                    <button id = "button1" name = "2014" type = "submit">2014</button>
+{#                </div>#}
+{#                <div class = "col-md-6 infoButton">#}
+                    <button id = "button2" name = "2015" type = "submit">2015</button>
+{#                </div>#}
+            </form>
+            <form class="row" id = "infoYear" action="delete" method="POST">
+{#                <div class = "col-md-6 infoButton">#}
+                    <button id = "button3" name = "2014Del" type = "submit">Delete 2014</button>
+{#                </div>#}
+{#                <div class = "col-md-6 infoButton">#}
+                    <button id = "button4" name = "2015Del" type = "submit"> Delete 2015</button>
+{#                </div>#}
+            </form>
+        <form enctype=multipart/form-data method = "post">
+            <input type="file" name="file"><br /><br />
+            <input type="submit" value="Upload">
+        </form>
+        </div>
+        <div class = "container" id="mainWrapper">
+             <div style="text-align: center;"><span id="variableText" style="font-size:30px">Student Enrollment in the US</span></div>
+{#             <div style="text-align: center;"><p style="color:#bbb; margin:0px;">&lt;Mouse over the map to see details for each state &gt;</p></div>#}
+        </div>
+{#        <script type = "text/javascript">#}
+{#            #}
+{#        </script>#}
+
+{# <script type="text/javascript">#}
+{#                var col = 'students';#}
+{#                var sliderValue = 1966;#}
+{#                var letter = 'Murder';#}
+{##}
+{#                var div = d3.select("#mainWrapper");#}
+{#                var svg = div.append("svg")#}
+{#                            .attr("id", "map13")#}
+{#                            .attr("height", 500)#}
+{#                            .attr("width", 960);#}
+{##}
+    {#            var murder = function() {#}
+    {#                letter = 'Murder';#}
+    {#                col = 'Murder per Unit Population';#}
+    {#                var localV = valueIs();#}
+    {#                console.log("localV " + localV);#}
+    {#                colorMap13(localV,letter);#}
+    {#                d3.select('#variableText').text(letterIs())#}
+    {#            };#}
+{##}
+{#                colorMapStart();#}
+{#                d3.select('#slider4').call(d3.slider().axis(true).min(1966).max(2012).step(1).on("slide", function(evt, value) {#}
+{#                var mapLetter = letterIs();#}
+{#                d3.select('#slider4text').text(value);#}
+{#                    colorMap13(value,mapLetter);#}
+{#                    sliderValue = value;#}
+{#                }));#}
+{##}
+{##}
+{#                function valueIs() {#}
+{#                    console.log(sliderValue);#}
+{#                    return sliderValue;#}
+{#                }#}
+{##}
+{#                function letterIs() {#}
+{#                    console.log('letter is: ' + letter);#}
+{#                    return letter;#}
+{#                }#}
+{##}
+{#                function colorMap13(sValue, z) {#}
+{#                    var map;#}
+{#                    var day_ = sValue;#}
+{#                    var colorScheme = z;#}
+{#                    if (colorScheme === 'Murder') {#}
+{#                        map = d3.geomap.choropleth()#}
+{#                            .geofile('../static/d3-geomap/topojson/countries/USA.json')#}
+{#                            .colors(colorbrewer.Reds[4])#}
+{#                            .projection(d3.geo.albersUsa)#}
+{#                            .column(col)#}
+{#                            .unitId('FIPS')#}
+{#                            .scale(900)#}
+{#                            .legend(true);#}
+{#                    }#}
+{##}
+    {#                var newD = [];#}
+    {#                var dataArray =[];#}
+    {#                var data = {{ data|safe }};#}
+{##}
+    {#                for(var i=1965; i<2013; i++) {#}
+    {#                    var newD = [];#}
+    {#                    for(var prop in data) {#}
+    {#                        if (data[prop].Year === i.toString()) {#}
+    {#                            newD.push(data[prop]);#}
+    {#                        }#}
+    {#                    }#}
+    {#                    dataArray[i] = newD;#}
+    {#                };#}
+{##}
+{#                    d3.select("#map13")#}
+{#                        .datum(data)#}
+{#                        .call(map.draw, map);#}
+{#                }#}
+{##}
+{#                function colorMapStart() {#}
+{#                    var map;#}
+{#                    map = d3.geomap.choropleth()#}
+{#                            .geofile('../static/d3-geomap/topojson/countries/USA.json')#}
+{#                            .colors(colorbrewer.Reds[9])#}
+{#                            .projection(d3.geo.albersUsa)#}
+{#                            .column(col)#}
+{#                            .unitId('FIPS')#}
+{#                            .scale(900)#}
+{#                            .legend(true);#}
+{#                    console.log(map);#}
+{##}
+{#                    var newD = [];#}
+{#                    var dataArray =[];#}
+{#                    var count = 0;#}
+{#                    var data = {{ data|tojson|safe }};#}
+    {#  var data = [{"students": 0, "state": "RhodeIsland", "FIPS": "US44"}, {"students": 1, "state": "Mississippi", "FIPS": "US28"}, {"students": 2, "state": "NewYork", "FIPS": "US36"}, {"students": 3, "state": "Oklahoma", "FIPS": "US40"}, {"students": 4, "state": "Delaware", "FIPS": "US10"}, {"students": 5, "state": "Minnesota", "FIPS": "US27"}, {"students": 6, "state": "Illinois", "FIPS": "US17"}, {"students": 8, "state": "Arkansas", "FIPS": "US05"}, {"students": 9, "state": "SouthCarolina", "FIPS": "US45"}, {"students": 11, "state": "Indiana", "FIPS": "US18"}, {"students": 12, "state": "Maryland", "FIPS": "US24"}, {"students": 13, "state": "Louisiana", "FIPS": "US22"}, {"students": 14, "state": "Idaho", "FIPS": "US16"}, {"students": 15, "state": "Wyoming", "FIPS": "US56"}, {"students": 16, "state": "NewHampshire", "FIPS": "US33"}, {"students": 17, "state": "Arizona", "FIPS": "US04"}, {"students": 18, "state": "Iowa", "FIPS": "US19"}, {"students": 20, "state": "Michigan", "FIPS": "US26"}, {"students": 21, "state": "Kansas", "FIPS": "US20"}, {"students": 22, "state": "Utah", "FIPS": "US49"}, {"students": 23, "state": "Virginia", "FIPS": "US51"}, {"students": 24, "state": "Oregon", "FIPS": "US41"}, {"students": 25, "state": "Connecticut", "FIPS": "US09"}, {"students": 26, "state": "Montana", "FIPS": "US30"}, {"students": 27, "state": "California", "FIPS": "US06"}, {"students": 28, "state": "Massachusetts", "FIPS": "US25"}, {"students": 29, "state": "NewMexico", "FIPS": "US35"}, {"students": 30, "state": "Wisconsin", "FIPS": "US55"}, {"students": 31, "state": "Vermont", "FIPS": "US50"}, {"students": 32, "state": "Georgia", "FIPS": "US13"}, {"students": 33, "state": "Pennsylvania", "FIPS": "US42"}, {"students": 34, "state": "NorthCarolina", "FIPS": "US37"}, {"students": 35, "state": "Florida", "FIPS": "US12"}, {"students": 36, "state": "Alaska", "FIPS": "US02"}, {"students": 37, "state": "Kentucky", "FIPS": "US21"}, {"students": 38, "state": "Hawaii", "FIPS": "US15"}, {"students": 39, "state": "SouthDakota", "FIPS": "US46"}, {"students": 40, "state": "Nebraska", "FIPS": "US31"}, {"students": 41, "state": "WestVirginia", "FIPS": "US54"}, {"students": 42, "state": "Missouri", "FIPS": "US29"}, {"students": 43, "state": "Ohio", "FIPS": "US39"}, {"students": 44, "state": "Alabama", "FIPS": "US01"}, {"students": 45, "state": "Texas", "FIPS": "US48"}, {"students": 47, "state": "Colorado", "FIPS": "US08"}, {"students": 48, "state": "DistrictOfColumbia", "FIPS": "US11"}, {"students": 51, "state": "NewJersey", "FIPS": "US34"}, {"students": 52, "state": "Washington", "FIPS": "US53"}, {"students": 53, "state": "Tennessee", "FIPS": "US47"}, {"students": 54, "state": "NorthDakota", "FIPS": "US38"}, {"students": 56, "state": "Nevada", "FIPS": "US32"}, {"students": 57, "state": "Maine", "FIPS": "US23"}];#}
+{#                    if (data.length <= 0)#}
+{#                    {#}
+{#                        console.log('data is empty');#}
+{#                        return;#}
+{#                    }                     #}
+{#                    console.log(data);#}
+    {#                for(var i=1965; i<2013; i++) {#}
+    {#                    var newD = [];#}
+    {#                    var count = 0;#}
+    {#                    for(var prop in data) {#}
+    {#                        if (data[prop].Year === i) {#}
+    {#                            newD.push(data[prop]);#}
+    {#                        }#}
+    {#                    }#}
+    {#                    dataArray[i] = newD;#}
+    {#                };#}
+    {#                console.log(dataArray[1966]);#}
+{#                    d3.select("#map13")#}
+{#                        .datum(data)#}
+{#                        .call(map.draw, map);#}
+{#                    console.log(map);#}
+{#                }#}
+{##}
+{#            </script>#}
+{#        <div id="mainWrapper" style="margin-top:25px">#}
+{#            <p style="font-size:12px">Data source: <a href="https://www.fbi.gov/stats-services/crimestats">A series of statistical crime reports and publications, detailing specific offenses and outlining trends</a>.</p>#}
+{#        </div>#}
+    </body>
+{% endblock %}

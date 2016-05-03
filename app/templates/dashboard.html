@@ -1,0 +1,59 @@
+{%  extends "base.html" %}
+{% block data %}
+    <script>
+    $( document ).ready(function() {
+        department_pie({{ pie_department_data|tojson  | safe }});
+        major_pie({{  pie_major_data|tojson | safe}});
+        set_slider();
+        ethinicity_line({{ ethinicity_data|tojson | safe }});
+        gender_line({{ gender_data|tojson | safe }});
+        generate_trends({{regress_data  | safe}});
+    });
+    </script>
+    <div class = "container">
+        <div class="row">
+                <div id="slider3"></div>
+            </div>
+        </div>
+        <div class="row year center">
+            <h3 id = "year_data"><strong>Fall 2004</strong></h3>
+        </div>
+    </div>
+    <div class = "row">
+        <div class="col s6 left">
+            <div class="row year center">
+                <h4 id = "department_data"><strong>Engineering</strong></h4>
+            </div>
+            <div class="row">
+                <div id = "pie" d3pie ="0.1.6"></div>
+            </div>
+        </div>
+        <div class="col s6 align-right">
+            <div class="row year center">
+                <h4 id = "major_data"><strong>Computer Science</strong></h4>
+            </div>
+            <div class="row">
+                <div id = "pie1" d3pie ="0.1.6"></div>
+            </div>
+        </div>
+    </div>
+    <div class = "row" style = "margin-left: 60px;">
+        <div class = "col s6 center">
+            <div class="row year center">
+                    <h4 id = "ethinicity_data"><strong>Ethnicity for Computer Science</strong></h4>
+            </div>
+            <div id = "ethnicity" class="center-align"></div>
+        </div>
+        <div class = "col s6 center">
+            <div class="row year center">
+                    <h4 id = "gender_data"><strong>Gender for Computer Science</strong></h4>
+            </div>
+            <div id = "gender" class="center-align"></div>
+        </div>
+    </div>
+    <div class="row" style = "margin-left: 60px;">
+
+        <div id = "trends"></div>
+    </div>
+
+{% endblock %}

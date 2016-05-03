@@ -1,0 +1,668 @@
+/*@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,300,700,800|Roboto+Slab:400,100,300,700);*/
+/*body {*/
+    /*!*Contains default information that applies through the body of the page*!*/
+
+    /*font-family: "Roboto Slab", sans-serif;*/
+    /*font-weight: 300;*/
+    /*font-size: 1.5em;*/
+    /*position: relative;*/
+    /*!*background-image: url('../img/img.png');*!*/
+
+    /*!*padding-top: 60px;*!*/
+/*}*/
+/*text {*/
+    /*font: 12px "Roboto Slab", Helvetica, Arial, sans-serif;*/
+    /*text-anchor: middle;*/
+    /*pointer-events: none;*/
+/*}*/
+/*#info {*/
+    /*font: 12px "Roboto Slab", Helvetica, Arial, sans-serif;*/
+    /*text-anchor: middle;*/
+    /*pointer-events: none;*/
+/*}*/
+/*circle {*/
+    /*fill: #ccc;*/
+/*}*/
+/*.node:hover circle {*/
+    /*fill: orange;*/
+/*}*/
+/*#information {*/
+    /*height: 120px !important;*/
+    /*overflow: scroll;*/
+    /*color: #616161;*/
+    /*border: 3px solid white;*/
+    /*background-color: white;*/
+/*}*/
+/*#name {*/
+    /*color: white;*/
+    /*font-weight: bold;*/
+    /*text-align: center;*/
+    /*vertical-align: middle;*/
+    /*padding-top: 20px;*/
+    /*padding-bottom: 15px;*/
+/*}*/
+/*#info {*/
+    /*color: #616161;*/
+    /*table-layout: fixed;*/
+/*}*/
+/*#code {*/
+    /*text-align: center;*/
+    /*vertical-align: middle;*/
+/*}*/
+/*td {*/
+    /*text-align: center;*/
+    /*font-size: 0.7em;*/
+    /*color: #616161;*/
+    /*vertical-align: middle;*/
+/*}*/
+/*th {*/
+    /*text-align: center;*/
+    /*vertical-align: middle;*/
+    /*font-weight: 400;*/
+    /*font-size: 16px;*/
+/*}*/
+/*.top {*/
+    /*text-align: center;*/
+    /*vertical-align: middle;*/
+    /*color: white;*/
+    /*font-weight: bold;*/
+    /*!*padding-bottom: 10px;*!*/
+/*}*/
+/*.navbar-default {*/
+    /*background-color: #F8F8A1;*/
+    /*border-color: #E7E7E7;*/
+/*}*/
+/*#top {*/
+    /*background-color: rgb(4, 36, 61);*/
+    /*color: white;*/
+/*}*/
+/*.container .header {*/
+    /*vertical-align: middle;*/
+    /*height: 10px;*/
+/*}*/
+/*#treeview-selectable {*/
+    /*padding-top: 50px;*/
+    /*font-size: 14px;*/
+/*}*/
+/*iframe {*/
+    /*height: 500px;*/
+    /*background-color: white;*/
+    /*border-color: transparent;*/
+/*}*/
+/*h1,*/
+/*h2,*/
+/*h3,*/
+/*h4,*/
+/*h5,*/
+/*h6 {*/
+    /*font-family: "Roboto Slab", sans-serif;*/
+    /*font-weight: bold;*/
+    /*margin: 0;*/
+/*}*/
+/*#top {*/
+    /*height: 50px;*/
+    /*font-size: 25px;*/
+/*}*/
+/*#heading {*/
+    /*position: relative;*/
+    /*vertical-align: middle;*/
+/*}*/
+/*.d3-slider {*/
+    /*position: relative;*/
+    /*font-family: Verdana, Arial, sans-serif;*/
+    /*font-size: 1.1em;*/
+    /*color: white;*/
+    /*border: 1px solid #aaaaaa;*/
+    /*background-color: white;*/
+    /*z-index: 2;*/
+/*}*/
+/*.d3-slider-horizontal {*/
+    /*height: .8em;*/
+/*}*/
+/*.d3-slider-range {*/
+    /*background: #2980b9;*/
+    /*left: 0px;*/
+    /*right: 0px;*/
+    /*height: 0.8em;*/
+    /*position: absolute;*/
+/*}*/
+/*.d3-slider-range-vertical {*/
+    /*background: #2980b9;*/
+    /*left: 0px;*/
+    /*right: 0px;*/
+    /*position: absolute;*/
+    /*top: 0;*/
+/*}*/
+/*.d3-slider-vertical {*/
+    /*width: .8em;*/
+    /*height: 100px;*/
+/*}*/
+/*.d3-slider-handle {*/
+    /*position: absolute;*/
+    /*width: 1.2em;*/
+    /*height: 1.2em;*/
+    /*border: 1px solid #d3d3d3;*/
+    /*border-radius: 4px;*/
+    /*background: #eee;*/
+    /*background: linear-gradient(to bottom, #eee 0%, #ddd 100%);*/
+    /*z-index: 3;*/
+/*}*/
+/*.d3-slider-handle:hover {*/
+    /*border: 1px solid #999999;*/
+/*}*/
+/*.d3-slider-horizontal .d3-slider-handle {*/
+    /*top: -.3em;*/
+    /*margin-left: -.6em;*/
+/*}*/
+/*.d3-slider-axis {*/
+    /*position: relative;*/
+    /*z-index: 1;*/
+/*}*/
+/*.d3-slider-axis-bottom {*/
+    /*top: .8em;*/
+/*}*/
+/*.d3-slider-axis-right {*/
+    /*left: .8em;*/
+/*}*/
+/*.d3-slider-axis path {*/
+    /*stroke-width: 0;*/
+    /*fill: none;*/
+/*}*/
+/*.d3-slider-axis line {*/
+    /*fill: none;*/
+    /*stroke: #aaa;*/
+    /*shape-rendering: crispEdges;*/
+/*}*/
+/*.d3-slider-axis text {*/
+    /*font-size: 13px;*/
+    /*color: white;*/
+/*}*/
+/*.d3-slider-vertical .d3-slider-handle {*/
+    /*left: -.25em;*/
+    /*margin-left: 0;*/
+    /*margin-bottom: -.6em;*/
+/*}*/
+/*circle {*/
+    /*stroke-width: 1;*/
+    /*stroke: #555;*/
+/*}*/
+/*.scaling-svg-container {*/
+    /*position: relative;*/
+    /*height: 0;*/
+    /*width: 100%;*/
+    /*padding: 0;*/
+    /*padding-bottom: 100%;*/
+    /*!* override this inline for aspect ratio other than square *!*/
+/*}*/
+/*.scaling-svg {*/
+    /*position: absolute;*/
+    /*height: 100%;*/
+    /*width: 100%;*/
+    /*left: 0;*/
+    /*top: 0;*/
+/*}*/
+/*circle.NorthAmerica {*/
+    /*fill: #ff8787;*/
+/*}*/
+/*circle.SouthAmerica {*/
+    /*fill: #80a1b6;*/
+/*}*/
+/*circle.Europe {*/
+    /*fill: #cc76d5;*/
+/*}*/
+/*circle.Asia {*/
+    /*fill: #16b59f;*/
+/*}*/
+/*circle.Africa {*/
+    /*fill: #fab585;*/
+/*}*/
+/*circle.Oceania {*/
+    /*fill: #c0e25e;*/
+/*}*/
+/*text {*/
+    /*fill: #555;*/
+    /*font-family: sans-serif;*/
+    /*font-size: 9;*/
+    /*pointer-events: none;*/
+    /*text-anchor: middle;*/
+/*}*/
+/*.state {*/
+    /*fill: none;*/
+    /*stroke: #a9a9a9;*/
+    /*stroke-width: 1;*/
+/*}*/
+/*.state:hover {*/
+    /*fill-opacity: 0.5;*/
+/*}*/
+/*#tooltip {*/
+    /*position: absolute;*/
+    /*text-align: center;*/
+    /*padding: 20px;*/
+    /*margin: 10px;*/
+    /*font: 12px sans-serif;*/
+    /*background: lightsteelblue;*/
+    /*border: 1px;*/
+    /*border-radius: 2px;*/
+    /*pointer-events: none;*/
+/*}*/
+/*#tooltip h4 {*/
+    /*margin: 0;*/
+    /*font-size: 14px;*/
+/*}*/
+/*#tooltip {*/
+    /*background: rgba(0, 0, 0, 0.9);*/
+    /*border: 1px solid grey;*/
+    /*border-radius: 5px;*/
+    /*font-size: 12px;*/
+    /*width: auto;*/
+    /*padding: 4px;*/
+    /*color: white;*/
+    /*opacity: 0;*/
+/*}*/
+/*#tooltip table {*/
+    /*table-layout: fixed;*/
+/*}*/
+/*#tooltip tr td {*/
+    /*padding: 0;*/
+    /*margin: 0;*/
+/*}*/
+/*#tooltip tr td:nth-child(1) {*/
+    /*width: 50px;*/
+/*}*/
+/*#tooltip tr td:nth-child(2) {*/
+    /*text-align: center;*/
+/*}*/
+/*#button7 {*/
+    /*background: #d39845;*/
+    /*display: inline-block;*/
+    /*margin: 0px 15px 0px 15px;*/
+    /*border: solid 2px black;*/
+    /*border-radius: 10px;*/
+    /*padding: 5px;*/
+/*}*/
+/*#button6 {*/
+    /*background: #bdbdbd;*/
+    /*display: inline-block;*/
+    /*margin: 0px 15px 0px 15px;*/
+    /*border: solid 2px black;*/
+    /*border-radius: 10px;*/
+    /*padding: 5px;*/
+/*}*/
+/*#button5 {*/
+    /*background: #a1d99b;*/
+    /*display: inline-block;*/
+    /*margin: 0px 15px 0px 15px;*/
+    /*border: solid 2px black;*/
+    /*border-radius: 10px;*/
+/*}*/
+/*#button4 {*/
+    /*background: #9ecae1;*/
+    /*display: inline-block;*/
+    /*margin: 0px 15px 0px 15px;*/
+    /*border: solid 2px black;*/
+    /*border-radius: 10px;*/
+    /*padding: 5px;*/
+/*}*/
+/*#button3 {*/
+    /*background: #9ecae1;*/
+    /*display: inline-block;*/
+    /*margin: 0px 15px 0px 15px;*/
+    /*border: solid 2px black;*/
+    /*border-radius: 10px;*/
+    /*padding: 5px;*/
+/*}*/
+/*#button2 {*/
+    /*background: #fc9272;*/
+    /*display: inline-block;*/
+    /*margin: 0px 15px 0px 15px;*/
+    /*border: solid 2px black;*/
+    /*border-radius: 10px;*/
+    /*padding: 5px;*/
+/*}*/
+/*#button1 {*/
+    /*background: #fc9272;*/
+    /*display: inline-block;*/
+    /*margin: 0px 15px 0px 15px;*/
+    /*border: solid 2px black;*/
+    /*border-radius: 10px;*/
+    /*padding: 5px;*/
+/*}*/
+/*#container {*/
+    /*width 800px;*/
+    /*margin-top: 20px;*/
+/*}*/
+/*#centerwrapper {*/
+    /*margin: auto;*/
+    /*width: 930px;*/
+/*}*/
+/*body {*/
+    /*font-family: Open Sans, Verdana, Arial, sans-serif;*/
+/*}*/
+/*.wrapper {*/
+    /*width: 700px;*/
+    /*margin-left: auto;*/
+    /*margin-right: auto;*/
+/*}*/
+/*.wrapper > div {*/
+    /*!*margin: 15px 0px 25px 0px;*!*/
+/*}*/
+
+/*#infoYear {*/
+    /*align: center;*/
+    /*text-align: center;*/
+
+    /*padding-top:20px;*/
+    /*align-content:center;*/
+    /*vertical-align: middle;*/
+    /*!*margin-left: auto;*!*/
+    /*!*margin-right: auto;*!*/
+/*}*/
+/*#intro {*/
+    /*margin: 0px 0px 20px 0px;*/
+/*}*/
+/*h4,*/
+/*h1 {*/
+    /*margin: 0px;*/
+/*}*/
+/*#introLine h1,*/
+/*#introLine p {*/
+    /*display: inline;*/
+    /*vertical-align: baseline;*/
+/*}*/
+/*.tipsy {*/
+    /*font-size: 10px;*/
+    /*position: absolute;*/
+    /*padding: 5px;*/
+    /*z-index: 100000;*/
+/*}*/
+/*.tipsy-inner {*/
+    /*background-color: #000;*/
+    /*color: #FFF;*/
+    /*max-width: 200px;*/
+    /*padding: 5px 8px 4px 8px;*/
+    /*text-align: center;*/
+/*}*/
+/*!* Rounded corners *!*/
+
+/*.tipsy-inner {*/
+    /*border-radius: 3px;*/
+    /*-moz-border-radius: 3px;*/
+    /*-webkit-border-radius: 3px;*/
+/*}*/
+/*!* Uncomment for shadow *!*/
+/*!*.tipsy-inner { box-shadow: 0 0 5px #000000; -webkit-box-shadow: 0 0 5px #000000; -moz-box-shadow: 0 0 5px #000000; }*!*/
+
+/*.tipsy-arrow {*/
+    /*position: absolute;*/
+    /*width: 0;*/
+    /*height: 0;*/
+    /*line-height: 0;*/
+    /*border: 5px dashed #000;*/
+/*}*/
+/*!* Rules to colour arrows *!*/
+
+/*.tipsy-arrow-n {*/
+    /*border-bottom-color: #000;*/
+/*}*/
+/*.tipsy-arrow-s {*/
+    /*border-top-color: #000;*/
+/*}*/
+/*.tipsy-arrow-e {*/
+    /*border-left-color: #000;*/
+/*}*/
+/*.tipsy-arrow-w {*/
+    /*border-right-color: #000;*/
+/*}*/
+/*.tipsy-n .tipsy-arrow {*/
+    /*top: 0px;*/
+    /*left: 50%;*/
+    /*margin-left: -5px;*/
+    /*border-bottom-style: solid;*/
+    /*border-top: none;*/
+    /*border-left-color: transparent;*/
+    /*border-right-color: transparent;*/
+/*}*/
+/*.tipsy-nw .tipsy-arrow {*/
+    /*top: 0;*/
+    /*left: 10px;*/
+    /*border-bottom-style: solid;*/
+    /*border-top: none;*/
+    /*border-left-color: transparent;*/
+    /*border-right-color: transparent;*/
+/*}*/
+/*.tipsy-ne .tipsy-arrow {*/
+    /*top: 0;*/
+    /*right: 10px;*/
+    /*border-bottom-style: solid;*/
+    /*border-top: none;*/
+    /*border-left-color: transparent;*/
+    /*border-right-color: transparent;*/
+/*}*/
+/*.tipsy-s .tipsy-arrow {*/
+    /*bottom: 0;*/
+    /*left: 50%;*/
+    /*margin-left: -5px;*/
+    /*border-top-style: solid;*/
+    /*border-bottom: none;*/
+    /*border-left-color: transparent;*/
+    /*border-right-color: transparent;*/
+/*}*/
+/*.tipsy-sw .tipsy-arrow {*/
+    /*bottom: 0;*/
+    /*left: 10px;*/
+    /*border-top-style: solid;*/
+    /*border-bottom: none;*/
+    /*border-left-color: transparent;*/
+    /*border-right-color: transparent;*/
+/*}*/
+/*.tipsy-se .tipsy-arrow {*/
+    /*bottom: 0;*/
+    /*right: 10px;*/
+    /*border-top-style: solid;*/
+    /*border-bottom: none;*/
+    /*border-left-color: transparent;*/
+    /*border-right-color: transparent;*/
+/*}*/
+/*.tipsy-e .tipsy-arrow {*/
+    /*right: 0;*/
+    /*top: 50%;*/
+    /*margin-top: -5px;*/
+    /*border-left-style: solid;*/
+    /*border-right: none;*/
+    /*border-top-color: transparent;*/
+    /*border-bottom-color: transparent;*/
+/*}*/
+/*.tipsy-w .tipsy-arrow {*/
+    /*left: 0;*/
+    /*top: 50%;*/
+    /*margin-top: -5px;*/
+    /*border-right-style: solid;*/
+    /*border-left: none;*/
+/*}*/
+
+/*#mainWrapper{*/
+/*text-align:center;*/
+/*}*/
+
+/*.loginpage{*/
+    /*padding-top:40px;*/
+    /*text-align: right;*/
+/*}*/
+
+/*a:link {*/
+    /*text-decoration: none;*/
+    /*color: #FFFFFF;*/
+/*}*/
+
+/*a:visited {*/
+    /*text-decoration: none;*/
+    /*color: #FFFFFF;*/
+/*}*/
+
+/*#loginword{*/
+    /*color: #000000;*/
+/*}*/
+/*#loginform{*/
+    /*padding-top: 60px;*/
+/*}*/
+/*@media (min-width: 1200px) {*/
+  /*.container {*/
+    /*width: 1000px;*/
+  /*}*/
+    /*.container1{*/
+        /*width: 450px;*/
+    /*}*/
+/*}*/
+
+/*#dropbox{*/
+    /*border: 1px solid grey;*/
+	/*border-radius: 3px;*/
+	/*position: relative;*/
+	/*margin: 80px auto 90px;*/
+	/*min-height: 290px;*/
+	/*overflow: hidden;*/
+	/*padding-bottom: 40px;*/
+    /*width: 990px;*/
+/*}*/
+
+
+/*#dropbox .message{*/
+	/*font-size: 11px;*/
+    /*text-align: center;*/
+    /*padding-top: 160px;*/
+    /*display: block;*/
+/*}*/
+
+/*#dropbox:before{*/
+	/*border-radius: 3px 3px 0 0;*/
+/*}*/
+
+/*#dropbox .preview{*/
+	/*width: 245px;*/
+	/*height: 215px;*/
+	/*float: left;*/
+	/*margin: 55px 0 0 60px;*/
+	/*position: relative;*/
+	/*text-align: center;*/
+/*}*/
+
+/*#dropbox .preview img{*/
+	/*max-width: 240px;*/
+	/*max-height: 180px;*/
+	/*border: 3px solid #fff;*/
+	/*display: block;*/
+	/*box-shadow: 0 0 2px #000;*/
+/*}*/
+
+/*#dropbox .imageHolder{*/
+	/*display: inline-block;*/
+	/*position: relative;*/
+/*}*/
+
+/*#dropbox .uploaded{*/
+	/*position: absolute;*/
+	/*top: 0;*/
+	/*left: 0;*/
+	/*height: 100%;*/
+	/*width: 100%;*/
+	/*background: url('../img/done.png') no-repeat center center rgba(255,255,255,0.5);*/
+	/*display: none;*/
+/*}*/
+
+/*#dropbox .preview.done .uploaded{*/
+	/*display: block;*/
+/*}*/
+
+/*#dropbox .progressHolder{*/
+	/*position: absolute;*/
+	/*background-color:#252f38;*/
+	/*height: 12px;*/
+	/*width: 100%;*/
+	/*left: 0;*/
+	/*bottom: 0;*/
+	/*box-shadow: 0 0 2px #000;*/
+/*}*/
+
+/*#dropbox .progress{*/
+	/*background-color:#2586d0;*/
+	/*position: absolute;*/
+	/*height: 100%;*/
+	/*left: 0;*/
+	/*width: 0;*/
+	/*box-shadow: 0 0 1px rgba(255, 255, 255, 0.4) inset;*/
+	/*-moz-transition: 0.25s;*/
+	/*-webkit-transition: 0.25s;*/
+	/*-o-transition: 0.25s;*/
+	/*transition: 0.25s;*/
+/*}*/
+
+/*#dropbox .preview.done .progress{*/
+	/*width: 100% !important;*/
+/*}*/
+
+.bar {
+  fill: #0d47a1;
+}
+
+.bar:hover {
+  fill: brown;
+}
+
+.axis {
+  font: 10px sans-serif;
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.x.axis path {
+  display: none;
+}
+
+.d3-tip {
+  line-height: 1;
+  font-weight: bold;
+  padding: 12px;
+  background: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  border-radius: 2px;
+}
+
+/* Creates a small triangle extender for the tooltip */
+.d3-tip:after {
+  box-sizing: border-box;
+  display: inline;
+  font-size: 10px;
+  width: 100%;
+  line-height: 1;
+  color: rgba(0, 0, 0, 0.8);
+  content: "\25BC";
+  position: absolute;
+  text-align: center;
+}
+
+/* Style northward tooltips differently */
+.d3-tip.n:after {
+  margin: -1px 0 0 0;
+  top: 100%;
+  left: 0;
+}
+
+path.line {
+  fill: none;
+  stroke: #666;
+  stroke-width: 1.5px;
+}
+
+path.area {
+  fill: #e7e7e7;
+}
+
+.legend rect {
+  fill:white;
+  stroke:black;
+  opacity:0.8;}

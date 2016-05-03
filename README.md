@@ -1,2 +1,2 @@
-# DemoViz
-Visualizing University of Illinois at Urbana-Champaign Enrollement Demographic Data
+# CS-411
+Visualizing UIUC Demographic Data

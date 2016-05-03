@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>D3.js Slider Examples</title>
+  <link rel="stylesheet" href="d3.slider.css" />  
+  <style>
+
+    body {
+      font-family: Verdana,Arial,sans-serif;
+    }
+
+    h2 {
+      font-size: 1.2em;
+      margin: 60px 0 5px 0;
+    }
+
+    .wrapper {
+      width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .wrapper > div {
+      margin: 35px 0;
+    }
+
+    #slider8 {
+      height: 250px;
+    }
+
+    #slider9 {
+      height: 250px;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+
+    <center><h2>Day of Month: <span id="slider4text">1</span></h2></center>
+    <!--<code>d3.slider().on("slide", function(evt, value) {<br>
+    &nbsp;&nbsp;d3.select('#slider3text').text(value);<br>
+    })</code>*/-->
+    <div id="slider4"></div>
+    
+  </div>
+
+  <script src="http://d3js.org/d3.v3.min.js"></script>
+  <script src="d3.slider.js"></script>
+  <script>
+
+   var global;
+
+    d3.select('#slider4').call(d3.slider().on("slide", function(evt, value) {
+      d3.select('#slider4text').text(value);
+        global = value;
+        printOut();
+    }));
+    
+      
+      function printOut() {
+       console.log(global);   
+      }
+  </script>
+ 
+</body>
+</html>

@@ -1,0 +1,19 @@
+{% extends "base_backup.html" %}
+{% block data %}
+    <div class="container1">
+        <div class = "row" id = "loginform">
+      <form class="form-signin" action = "addpassword" method="post">
+        <h2 class="form-signin-heading" style="font-size:20px; text-align: center;">Please sign in</h2><br>
+        <label for="inputEmail" class="sr-only">Username</label>
+        <input id="inputEmail" class="form-control" placeholder="Username" required autofocus name = "username">
+        <label for="inputPassword" class="sr-only">Password</label>
+        <input type="password" id="inputPassword" class="form-control" placeholder="Password" required name = "password">
+          <br>
+          <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button><br>
+          <a href = "/forgotpassword" style = "color:#000000; text-align: center;"><span style = "text-align:center;">Forgot password? </span></a>
+      </form>
+            </div>
+    </div>
+
+
+{%  endblock %}

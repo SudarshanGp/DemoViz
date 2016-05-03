@@ -1,0 +1,23 @@
+{%  extends "base.html" %}
+{% block data %}
+    <script>
+    $( document ).ready(function() {
+        generate_trendsStand({{data | safe}}, "Engineering", "Computer Science", "Freshman");
+        generate_treeStand({{ tree_data | safe }});
+
+    });
+    </script>
+    <div class = "row">
+        <div class="col s2 left">
+            <div id = "tree"></div>
+        </div>
+         <div class="col s10 left">
+             <div class = "row">
+                 <h4 id = "trend_data"><strong>Regression Analysis for Engineering, Computer Science, Freshman</strong></h4>
+             </div>
+             <div class = "row">
+                 <div id = "trends"></div>
+             </div>
+         </div>
+    </div>
+{% endblock %}

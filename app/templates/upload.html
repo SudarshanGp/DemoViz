@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% block data %}
+    <br><br><br><br><br>
+    <form enctype=multipart/form-data method="post">
+        <div class="row center">
+            <h4>Insert/Update New Data</h4>
+            <div class="col s10 center">
+                <div class="file-field input-field center">
+                    <div class="btn orange center">
+                        <span>File</span>
+                        <input type="file" name="file" multiple>
+                    </div>
+                    <div class="file-path-wrapper">
+                        <input class="file-path validate" type="text" placeholder="Upload one or more files">
+                    </div>
+                </div>
+            </div>
+            <div class="col s2 center">
+                <button class="btn waves-effect waves-light pink accent-3" type="submit" value="Upload"
+                        style=" font-size: 0.9em;margin-top: 15px; height:45px;">Upload Files
+                    <i class=" large material-icons right">send</i>
+                </button>
+            </div>
+        </div>
+        <div class="row center">
+            <span>{{ message }}</span>
+        </div>
+        <div class="row center">
+            <h4>Delete Data</h4>
+            <form class="create-form" method="post">
+                <div class="col s10 center">
+                    <div class = "row-margin">
+                        <div class="input-field col s12">
+                            <i class="mdi-communication-email prefix"></i>
+                        <input placeholder="Filename to Delete" id="filedel" type="text" name = "filedel">
+                        <label for="filedel">First Name</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col s2 center">
+                    <button class="btn waves-effect waves-light pink accent-3" type="submit" value="Delete"
+                            style=" font-size: 0.9em;margin-top: 15px; height:45px;">Delete File
+                        <i class=" large material-icons right">send</i>
+                    </button>
+                </div>
+            </form>
+        </div>
+
+    </form>
+    <br><br>
+{% endblock %}

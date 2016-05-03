@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.min.css">
+      <link rel="stylesheet" href="static/css/style.css">
+<link rel="stylesheet" href="http://rawgithub.com/Caged/d3-tip/master/examples/example-styles.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+       <link rel="stylesheet" href="static/bootstrap-treeview/src/css/bootstrap-treeview.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.min.css">
+      <script type="text/javascript" src="static/prefixfree/prefixfree.min.js"></script> <!-- taking care of browser prefixes -->
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+      <script src="static/bootstrap-treeview/src/js/bootstrap-treeview.js"></script>
+      <script src="static/js/menu.js"></script>
+      <script src="static/js/tipsy.js"></script>
+    <script type="text/javascript" src="static/js/mapgenerator.js"></script>
+        <link href="static/d3-geomap/css/d3.geomap.css" rel="stylesheet">
+        <link href="static/d3-slider/d3.slider.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Open+Sans"/>
+{#        <link rel="stylesheet" href="http://rawgithub.com/Caged/d3-tip/master/examples/example-styles.css">#}
+{#        <script type="text/javascript" src="d3/d3.js"></script>#}
+        <script type="text/javascript" src="http://mbostock.github.com/d3/d3.v2.min.js"></script>
+
+        <script src="static/d3-geomap/vendor/d3.geomap.dependencies.min.js"></script>
+        <script src="static/d3-geomap/js/d3.geomap.js"></script>
+        <script src="static/d3-slider/d3.slider.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+  <link href="http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+        <script type="text/javascript" src="static/js/slider.js"></script>
+        <script type="text/javascript" src="static/js/tipindex.js"></script>
+          <nav id="navigator" class="navbar navbar-default navbar-fixed-top" role="navigation">
+         <div id = "top">
+            <div  class="container header">
+               <div  class="navbar header">
+                  <span id = "heading"><span class="glyphicon glyphicon-chevron-left"></span>DemoViz<span class="glyphicon glyphicon-chevron-right"></span></span>
+               </div>
+               <!-- navbar header -->
+            </div>
+            <!--container header -->
+         </div>
+          <!--top -->
+      </nav> <!-- navbar navbar-default navbar-fixed-top  -->
+
+</head>
+<body>
+
+{#    <div class="container">#}
+{#        <div class ="row">#}
+{#                <div id="slider3"></div>#}
+{#        </div>#}
+{#        <div class="row">#}
+{##}
+{#            <div class="col-md-4">#}
+{##}
+{#                <div id="treeview-selectable"></div>#}
+{#            </div>#}
+{#            <div class="col-md-8">#}
+{#                    <div id="map"></div>#}
+{#            </div>#}
+{#        </div>#}
+{#        <a href="https://www.icpsr.umich.edu/icpsrweb/ICPSR/series/00121">Source: University of Michigan Datasets</a>#}
+{##}
+{#    </div>#}
+{##}
+    <script type="text/javascript">
+    $( document ).ready(function() {
+        mapgenerate({{ data|tojson|safe }});
+
+
+    });
+    </script>
+    <div class="wrapper">
+
+        <div style="text-align: center;"><h2 style="margin:10px 0px 0px 0px">Year <span id="slider4text">2014</span></h2></div>
+        <div id="slider4"></div>
+        <div style="text-align: center;"><p style="color:#bbb">&lt;Drag or click the slider to change the year&gt;</p></div>
+        </div>
+        <hr>
+        <div class="wrapper">
+        <div style="text-align: center;"><span id="variableText" style="font-size:30px">Enrollment per State</span></div>
+        <div style="text-align: center;"><p style="color:#bbb; margin:0px;">&lt;Mouse over the map to see details for each state&gt;</p></div>
+    </div>
+</body>
+</html>
