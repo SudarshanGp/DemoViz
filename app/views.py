@@ -269,71 +269,71 @@ def trendsStand():
     return render_template('trendsStand.html', data=all_rank_predictions, tree_data=tree_data_rank)
 
 
-@app.route('/upload', methods=['GET', 'POST'])
-def upload():
-    if request.method == 'POST':
-        file = request.files['file']
-        if file:
-            filename = file.filename
-            file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-            file_split = filename.split('.')
-            sql_file = file_split[0] + ".sql"
+# @app.route('/upload', methods=['GET', 'POST'])
+# def upload():
+#     if request.method == 'POST':
+#         file = request.files['file']
+#         if file:
+#             filename = file.filename
+#             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+#             file_split = filename.split('.')
+#             sql_file = file_split[0] + ".sql"
 
-            if "update" in filename.lower():
-                python_command = "python " + "update_year.py" + " " + filename
-                os.system(python_command)
-                file_split = filename.split('.')
-                sql_file = file_split[0] + ".sql"
-                executeScriptsFromFile(sql_file)
+#             if "update" in filename.lower():
+#                 python_command = "python " + "update_year.py" + " " + filename
+#                 os.system(python_command)
+#                 file_split = filename.split('.')
+#                 sql_file = file_split[0] + ".sql"
+#                 executeScriptsFromFile(sql_file)
 
-            elif "enr" in filename.lower():
-                python_command = "python " + "standing_parser.py" + " " + filename
-                os.system(python_command)
-                file_split = filename.split('.')
-                sql_file = file_split[0] + ".sql"
-                executeScriptsFromFile(sql_file)
+#             elif "enr" in filename.lower():
+#                 python_command = "python " + "standing_parser.py" + " " + filename
+#                 os.system(python_command)
+#                 file_split = filename.split('.')
+#                 sql_file = file_split[0] + ".sql"
+#                 executeScriptsFromFile(sql_file)
 
-            else:
-                python_command = "python " + "file_parser.py" + " " + filename
-                os.system(python_command)
-                file_split = filename.split('.')
-                sql_file = file_split[0] + ".sql"
-                executeScriptsFromFile(sql_file)
-            return redirect(url_for('dashboard'))
-        elif request.form['filedel'] != '':
-            file_split = request.form['filedel'].split('.')
-            sql_file = "rm" + file_split[0] + ".sql"
-            if os.path.isfile(sql_file):
-                executeScriptsFromFile(sql_file)
-            return redirect(url_for('dashboard'))
-        else:
-            return render_template('upload.html', message="Incorrect Input")
-    return render_template('upload.html', message="No file uploaded")
-
-
-@app.route('/uploads/<filename>')
-def uploaded_file(filename):
-    return send_from_directory(app.config['UPLOAD_FOLDER'],
-                               filename)
+#             else:
+#                 python_command = "python " + "file_parser.py" + " " + filename
+#                 os.system(python_command)
+#                 file_split = filename.split('.')
+#                 sql_file = file_split[0] + ".sql"
+#                 executeScriptsFromFile(sql_file)
+#             return redirect(url_for('dashboard'))
+#         elif request.form['filedel'] != '':
+#             file_split = request.form['filedel'].split('.')
+#             sql_file = "rm" + file_split[0] + ".sql"
+#             if os.path.isfile(sql_file):
+#                 executeScriptsFromFile(sql_file)
+#             return redirect(url_for('dashboard'))
+#         else:
+#             return render_template('upload.html', message="Incorrect Input")
+#     return render_template('upload.html', message="No file uploaded")
 
 
-def executeScriptsFromFile(filename):
-    # Open and read the file as a single buffer
-    global rerenderEth
-    global rerenderGender
-    global rerenderRank
-    fd = open(filename, "a")
-    fd.write("SELECT * FROM db.id WHERE db.id.Year = 'emptylol';")
-    fd.close()
+# @app.route('/uploads/<filename>')
+# def uploaded_file(filename):
+#     return send_from_directory(app.config['UPLOAD_FOLDER'],
+#                                filename)
 
-    fd = open(filename, 'r')
-    sqlFile = fd.read()
-    fd.close()
-    cursor.execute(sqlFile)
-    db.commit()
-    rerenderGender=1
-    rerenderEth=1
-    rerenderRank=1
+
+# def executeScriptsFromFile(filename):
+#     # Open and read the file as a single buffer
+#     global rerenderEth
+#     global rerenderGender
+#     global rerenderRank
+#     fd = open(filename, "a")
+#     fd.write("SELECT * FROM db.id WHERE db.id.Year = 'emptylol';")
+#     fd.close()
+
+#     fd = open(filename, 'r')
+#     sqlFile = fd.read()
+#     fd.close()
+#     # cursor.execute(sqlFile)
+#     db.commit()
+#     rerenderGender=1
+#     rerenderEth=1
+#     rerenderRank=1
 
 
 def preprocessRank():
@@ -353,14 +353,18 @@ def preprocessRank():
             temp_dict['Year'] = int(year)
             regression_data.append(temp_dict)
     data_gender = pd.DataFrame(regression_data)
-    get_departments_names = "SELECT DISTINCT Department from db.id;"
-    cursor.execute(get_departments_names)
-    get_department_names_json = dictfetchall(cursor)
+    with open('department_names.json') as data_file:
+        get_department_names_json = json_loads_byteified(data_file)
+    # get_departments_names = "SELECT DISTINCT Department from db.id;"
+    # cursor.execute(get_departments_names)
+    # get_department_names_json = dictfetchall(cursor)
     for key, value in enumerate(get_department_names_json):
         tree_data_rank.append({'label': value['Department'], 'children': []})
-    get_department_majors = "SELECT DISTINCT Department, Major from db.id;"
-    cursor.execute(get_department_majors)
-    get_department_majors_json = dictfetchall(cursor)
+    with open('major.json') as data_file:
+        get_department_majors_json = json_loads_byteified(data_file)
+    # get_department_majors = "SELECT DISTINCT Department, Major from db.id;"
+    # cursor.execute(get_department_majors)
+    # get_department_majors_json = dictfetchall(cursor)
     for key, value in enumerate(get_department_majors_json):
         match_index = next(index for (index, d) in enumerate(tree_data_rank) if d["label"] == value['Department'])
         tree_data_rank[match_index]['children'].append({'label': value['Major'],
@@ -390,6 +394,8 @@ def preprocessRank():
                     all_rank_predictions[department][major] = {'Freshman': temp_data_white,
                                                                'Sophomore': temp_data_asian, 'Junior': temp_data_afam,
                                                                'Senior': temp_data_hisp, 'Graduate': temp_data_amal}
+    with open('all_rank_predictions.json', 'w') as outfile:
+        json.dumps(all_rank_predictions, outfile)
 
 
 def preprocessEth():
@@ -409,14 +415,19 @@ def preprocessEth():
             temp_dict['Year'] = int(year)
             regression_data.append(temp_dict)
     data_gender = pd.DataFrame(regression_data)
-    get_departments_names = "SELECT DISTINCT Department from db.id;"
-    cursor.execute(get_departments_names)
-    get_department_names_json = dictfetchall(cursor)
+    with open('department_names.json') as data_file:
+        get_department_names_json = json_loads_byteified(data_file)
+
+    # get_departments_names = "SELECT DISTINCT Department from db.id;"
+    # cursor.execute(get_departments_names)
+    # get_department_names_json = dictfetchall(cursor)
     for key, value in enumerate(get_department_names_json):
         tree_data_eth.append({'label': value['Department'], 'children': []})
-    get_department_majors = "SELECT DISTINCT Department, Major from db.id;"
-    cursor.execute(get_department_majors)
-    get_department_majors_json = dictfetchall(cursor)
+    with open('major.json') as data_file:
+        get_department_majors_json = json_loads_byteified(data_file)
+    # get_department_majors = "SELECT DISTINCT Department, Major from db.id;"
+    # cursor.execute(get_department_majors)
+    # get_department_majors_json = dictfetchall(cursor)
     for key, value in enumerate(get_department_majors_json):
         match_index = next(index for (index, d) in enumerate(tree_data_eth) if d["label"] == value['Department'])
         tree_data_eth[match_index]['children'].append({'label': value['Major'],
@@ -452,6 +463,8 @@ def preprocessEth():
                                                               'Hispanic': temp_data_hisp,
                                                               'Native American': temp_data_amal,
                                                               'Foreigner': temp_data_for}
+    with open('all_eth_predictions.json', 'w') as outfile:
+        json.dumps(all_eth_predictions, outfile)
 
 
 def preprocess():
@@ -471,14 +484,18 @@ def preprocess():
             temp_dict['Year'] = int(year)
             regression_data.append(temp_dict)
     data_gender = pd.DataFrame(regression_data)
-    get_departments_names = "SELECT DISTINCT Department from db.id;"
-    cursor.execute(get_departments_names)
-    get_department_names_json = dictfetchall(cursor)
+    with open('department_names.json') as data_file:
+        get_department_names_json = json_loads_byteified(data_file)
+    # get_departments_names = "SELECT DISTINCT Department from db.id;"
+    # cursor.execute(get_departments_names)
+    # get_department_names_json = dictfetchall(cursor)
     for key, value in enumerate(get_department_names_json):
         tree_data.append({'label': value['Department'], 'children': []})
-    get_department_majors = "SELECT DISTINCT Department, Major from db.id;"
-    cursor.execute(get_department_majors)
-    get_department_majors_json = dictfetchall(cursor)
+    with open('major.json') as data_file:
+        get_department_majors_json = json_loads_byteified(data_file)
+    # get_department_majors = "SELECT DISTINCT Department, Major from db.id;"
+    # cursor.execute(get_department_majors)
+    # get_department_majors_json = dictfetchall(cursor)
     for key, value in enumerate(get_department_majors_json):
         match_index = next(index for (index, d) in enumerate(tree_data) if d["label"] == value['Department'])
         tree_data[match_index]['children'].append(
@@ -499,11 +516,46 @@ def preprocess():
                     all_gender_predictions[department] = {}
                     all_gender_predictions[department][major] = {'Female': temp_data_female, 'Male': temp_data_male}
 
+    with open('all_gender_predictions.json', 'w') as outfile:
+        json.dumps(all_gender_predictions, outfile)
+
+def json_loads_byteified(file_handle):
+    return _byteify(
+        json.load(file_handle, object_hook=_byteify),
+        ignore_dicts=True
+    )
+
+def json_load_byteified(json_text):
+    return _byteify(
+        json.loads(json_text, object_hook=_byteify),
+        ignore_dicts=True
+    )
+
+def _byteify(data, ignore_dicts = False):
+    # if this is a unicode string, return its string representation
+    if isinstance(data, unicode):
+        return data.encode('utf-8')
+    # if this is a list of values, return list of byteified values
+    if isinstance(data, list):
+        return [ _byteify(item, ignore_dicts=True) for item in data ]
+    # if this is a dictionary, return dictionary of byteified keys and values
+    # but only if we haven't already byteified it
+    if isinstance(data, dict) and not ignore_dicts:
+        return {
+            _byteify(key, ignore_dicts=True): _byteify(value, ignore_dicts=True)
+            for key, value in data.iteritems()
+        }
+    # if it's anything else, return it in its original form
+    return data
+
 
 if __name__ == '__main__':
-    db = pymysql.connect(host='162.243.195.102', user='root', passwd='411Password', db='db')
-    cursor = db.cursor()
+    # db = pymysql.connect(host='162.243.195.102', user='root', passwd='411Password', db='db')
+    # cursor = db.cursor()
     preprocess()
+    print("Done preprocess")
     preprocessEth()
+    print("Done preprocessEth")
     preprocessRank()
+    print("Done preprocessRank")
     app.run(host='0.0.0.0')
